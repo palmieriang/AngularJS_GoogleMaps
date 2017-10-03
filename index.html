@@ -103,7 +103,7 @@
 							<span flex></span>
 							<div class="row">
 								<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
-									<button type="submit" class="store-btn orange no-pad button-margin-bottom" ng-click="activateBox()">
+									<button type="submit" class="" ng-click="addItem()">
 										<span ng-if="!loading">Submit</span>
 										<md-progress-circular md-mode="indeterminate" ng-if="loading"></md-progress-circular>
 									</button>
@@ -124,10 +124,11 @@
 
 				</div>
 			</form>
-		</div>
 
-		<div class="map-container">
-			<div id="map" style="height: 150px"></div>
+			<div class="map-container">
+				<div id="map" style="height: 150px"></div>
+			</div>
+
 		</div>
 
 	<!-- Script -->

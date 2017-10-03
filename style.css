@@ -1,4 +1,3 @@
-
 input.capitalize {
 	text-transform: capitalize;
 }
@@ -22,15 +21,6 @@ input.capitalize {
 	color: white;
 }
 
-md-input-container.gen-form.booking-form {
-	height: 50px;
-	border: 0;
-	padding: 10px 0px;
-	text-align: center;
-	font-weight: 100;
-	color: #436d7d;
-}
-
 input.gen-form, textarea.gen-form, md-input-container.gen-form, md-datepicker.gen-form {
 	border: 1px solid rgba(97, 97, 97, 0.24);
 	width: 100%;
@@ -46,9 +36,9 @@ md-input-container.gen-form {
 	background-color: white;
 }
 
-textarea.gen-form {
+/*textarea.gen-form {
 	height: 100px;
-}
+}*/
 
 input.gen-form:focus, textarea.gen-form:focus {
 	border: 1px solid #436d7d;
@@ -61,17 +51,12 @@ form label {
 	margin-top: 10px;
 }
 
-button.gen-form {
-	background: white;
-	border: 1px solid #d9d9d9;
-	width: 100%;
-	font-weight: bold;
-	color: #436d7d;
-	height: 40px;
-	transition: .2s all ease;
+.form-error.text {
+    border: none;
+    color: #ffffff;
+    background: #ca786a;
+    padding: 3px;
+    width: 100%;
+    margin-top: -5px;
+    font-size: 11px;
 }
-
-button.gen-form:hover {
-	border: 1px solid #436d7d;
-}
-
