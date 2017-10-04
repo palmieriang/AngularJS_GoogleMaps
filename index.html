@@ -32,7 +32,7 @@
 									Add your first name here
 								</md-tooltip>
 							</label>
-						  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.firstName.error}" placeholder=" " ng-model="$parent.form.firstName.value" required/>
+						  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.firstName.error}" placeholder=" " ng-model="form.firstName.value" required/>
 						  <p ng-if="form.firstName.error" class="form-error text" ng-bind="form.firstName.error"></p>
 
 							<label class="required">Last Name
@@ -40,7 +40,7 @@
 									Add your last name here
 								</md-tooltip>
 							</label>
-						  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.lastName.error}" placeholder=" " ng-model="$parent.form.lastName.value" required/>
+						  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.lastName.error}" placeholder=" " ng-model="form.lastName.value" required/>
 						  <p ng-if="form.lastName.error" class="form-error text" ng-bind="form.lastName.error"></p>
 						</div>
 					</div>
@@ -51,7 +51,7 @@
 								Add the first line of the address of the box location
 							</md-tooltip>
 						</label>
-						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.address1.error}" placeholder=" " ng-model="$parent.form.address1.value" details="$parent.chosenPlaceDetails" googleplace />
+						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.address1.error}" placeholder=" " ng-model="form.address1.value" details="chosenPlaceDetails" googleplace />
 						<p ng-if="form.address1.error" class="form-error text" ng-bind="form.address1.error"></p>
 
 						<label>Address - Line 2
@@ -59,7 +59,7 @@
 								Add the second line of the address of the box location
 							</md-tooltip>
 						</label>
-						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.address2.error}" placeholder=" " ng-model="$parent.form.address2.value" />
+						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.address2.error}" placeholder=" " ng-model="form.address2.value" />
 						<p ng-if="form.address2.error" class="form-error text" ng-bind="form.address2.error"></p>
 
 						<label class="required"> Country
@@ -67,7 +67,7 @@
 								Add the country of the address of the box location
 							</md-tooltip>
 						</label>
-						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.country.error}" placeholder=" " ng-model="$parent.form.country.value"/>
+						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.country.error}" placeholder=" " ng-model="form.country.value"/>
 						<p ng-if="form.country.error" class="form-error text" ng-bind="form.country.error"></p>
 
 						<label class="required"> City 
@@ -75,7 +75,7 @@
 								Add the city of the address of the box location
 							</md-tooltip>
 						</label>
-						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.city.error}" placeholder=" " ng-model="$parent.form.city.value"/>
+						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.city.error}" placeholder=" " ng-model="form.city.value"/>
 						<p ng-if="form.city.error" class="form-error text" ng-bind="form.city.error"></p>
 
 						<label class="required">Postcode
@@ -83,46 +83,44 @@
 								Add the postcode of the address of the box location
 							</md-tooltip>
 						</label>
-						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.postcode.error}" placeholder=" " ng-model="$parent.form.postcode.value" details="$parent.chosenPlaceDetails" googleplace/>
+						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.postcode.error}" placeholder=" " ng-model="form.postcode.value" details="chosenPlaceDetails" googleplace/>
 						<p ng-if="form.postcode.error" class="form-error text" ng-bind="form.postcode.error"></p>
 
-<!-- 							<label class="required">Activated Date
-								<md-tooltip md-direction="top">
-									Add the date you wish to activate the box
-								</md-tooltip>
-							</label>
-							<md-input-container ng-class="{'form-error': form.signDate.error}">
-								<md-datepicker ng-model="form.signDate.value" md-min-date="minDate" name="dateField" class="no-icon" md-placeholder="--/--" aria-label="Booking Date"></md-datepicker>
-			        </md-input-container>
-							<p ng-if="form.signDate.error" class="form-error text" ng-bind="form.signDate.error"></p> -->
+<!-- 						<label class="required">Activated Date
+							<md-tooltip md-direction="top">
+								Add the date you wish to activate the box
+							</md-tooltip>
+						</label>
+						<md-input-container ng-class="{'form-error': form.signDate.error}">
+							<md-datepicker ng-model="form.signDate.value" md-min-date="minDate" name="dateField" class="no-icon" md-placeholder="--/--" aria-label="Booking Date"></md-datepicker>
+						</md-input-container>
+						<p ng-if="form.signDate.error" class="form-error text" ng-bind="form.signDate.error"></p> -->
 					</div>
 					<br />
+				</div>
 
-				  <div class="row">
-						<md-dialog-actions class="booking-footer">
-							<span flex></span>
-							<div class="row">
-								<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
-									<button type="submit" class="" ng-click="addItem()">
-										<span ng-if="!loading">Submit</span>
-										<md-progress-circular md-mode="indeterminate" ng-if="loading"></md-progress-circular>
-									</button>
-								</div>
+			  <div class="row">
+					<md-dialog-actions class="booking-footer">
+						<span flex></span>
+						<div class="row">
+							<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
+								<button type="submit" class="" ng-click="addItem()">
+									<span ng-if="!loading">Submit</span>
+									<md-progress-circular md-mode="indeterminate" ng-if="loading"></md-progress-circular>
+								</button>
 							</div>
-				  	</md-dialog-actions>
-						<!-- <p ng-if="submitError" class="form-error text" ng-bind="errorMessage"></p> -->
-						<div class="row text-center" ng-if="submitActivationError">
-							<p class="container-title text-center request-submitted"> Failed to add the item.</p>
 						</div>
-
-						<div class="row text-center" ng-if="requestSubmitted">
-							<p class="container-title text-center request-submitted"> Thank you for adding a new item.</p>
-						</div>
+			  	</md-dialog-actions>
+					<!-- <p ng-if="submitError" class="form-error text" ng-bind="errorMessage"></p> -->
+					<div class="row text-center" ng-if="submitActivationError">
+						<p class="container-title text-center request-submitted"> Failed to add the item.</p>
 					</div>
 
-
-
+					<div class="row text-center" ng-if="requestSubmitted">
+						<p class="container-title text-center request-submitted"> Thank you for adding a new item.</p>
+					</div>
 				</div>
+
 			</form>
 
 			<div class="map-container">
@@ -133,6 +131,6 @@
 
 	<!-- Script -->
 	<script src="script.js"></script>
-	<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmnk4-s1s9kxwimuu7m7uMRlnDG7ERIc8'></script>
+	<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmnk4-s1s9kxwimuu7m7uMRlnDG7ERIc8&libraries=places'></script>
 </body>
 </html>

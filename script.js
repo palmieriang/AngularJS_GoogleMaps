@@ -32,11 +32,7 @@ angular.module('myModule', ['ngMaterial'])
         error : ''
       },
       latitude : '',
-      longitude : '',
-      quantity : {
-        value : '',
-        error : ''
-      }
+      longitude : ''
       // signDate : {
       //     value : '',
       //     error : ''
@@ -95,6 +91,19 @@ angular.module('myModule', ['ngMaterial'])
     return re.test(postcode);
   }
 
+  $scope.$watch('chosenPlaceDetails', function(value, old)
+  {
+    console.log('1: ' + $scope.chosenPlaceDetails);
+
+    if ($scope.chosenPlaceDetails)
+    {
+    console.log('2: ' + $scope.chosenPlaceDetails);
+      // googleAutoCompleteAddress($scope.chosenPlaceDetails, $scope.requestForm);
+    }
+
+  }, true);
+
+
   $scope.addItem = function() {
   	console.log($scope.form);
   }
@@ -109,4 +118,27 @@ angular.module('myModule', ['ngMaterial'])
 
 	initMap();
 
+})
+.directive('googleplace', function($rootScope) {
+    return {
+        require: 'ngModel',
+        scope: {
+            ngModel: '=',
+            details: '=?'
+        },
+        link: function(scope, element, attrs, model) {
+            var options = {
+                types: []
+            };
+            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+
+            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+                scope.$apply(function() {
+                    scope.details = scope.gPlace.getPlace();
+                    model.$setViewValue(element.val());
+                });
+            });
+        }
+    };
 });
+
