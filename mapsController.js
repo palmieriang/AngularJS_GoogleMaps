@@ -93,16 +93,61 @@ angular.module('myModule', ['ngMaterial'])
 
   $scope.$watch('chosenPlaceDetails', function(value, old)
   {
-    console.log('1: ' + $scope.chosenPlaceDetails);
-
     if ($scope.chosenPlaceDetails)
     {
-    console.log('2: ' + $scope.chosenPlaceDetails);
-      // googleAutoCompleteAddress($scope.chosenPlaceDetails, $scope.requestForm);
+      googleAutoCompleteAddress($scope.chosenPlaceDetails, $scope.form);
     }
 
   }, true);
 
+  function googleAutoCompleteAddress(chosenPlace, form)
+  {
+    form.address1.value = '';
+    form.address2.value = '';
+    form.city.value = '';
+    form.country.value = '';
+    form.postcode.value = '';
+
+    var addressComponents = chosenPlace.address_components;
+    var line1 = [];
+    var addressType;
+    for (var i = 0; i < addressComponents.length; i++)
+    {
+      addressType = addressComponents[i].types[0];
+
+      if (addressType == 'street_number' || addressType == 'route')
+      {
+        line1.push(addressComponents[i].long_name);
+      }
+
+      if (addressType == 'neighborhood')
+      {
+        form.address2.value = addressComponents[i].long_name;
+      }
+
+      if (addressType == 'postal_town')
+      {
+        form.city.value = addressComponents[i].long_name;
+      }
+
+      if (addressType == 'country')
+      {
+        form.country.value = addressComponents[i].long_name;
+      }
+
+      if (addressType == 'postal_code')
+      {
+        form.postcode.value = addressComponents[i].long_name;
+      }
+    }
+
+    form.address1.value = line1.join(' ');
+
+    form.latitude = chosenPlace.geometry.location.lat();
+    form.longitude = chosenPlace.geometry.location.lng();
+
+    console.log(form);
+  }
 
   $scope.addItem = function() {
   	console.log($scope.form);
