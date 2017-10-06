@@ -37,7 +37,7 @@ angular.module('myModule', ['ngMaterial'])
       //     value : '',
       //     error : ''
       // },
-    };  
+    };
   }
 
   initializeRequestForm();
@@ -159,6 +159,11 @@ angular.module('myModule', ['ngMaterial'])
 	    center: {lat: 51.509865, lng: -0.118092},
 	    zoom: 8
 	  });
+    var marker = new google.maps.Marker({
+      position: {lat: 51.509865, lng: -0.118092},
+      map: map
+    });
+
 	}
 
 	initMap();
@@ -166,24 +171,24 @@ angular.module('myModule', ['ngMaterial'])
 })
 .directive('googleplace', function($rootScope) {
     return {
-        require: 'ngModel',
-        scope: {
-            ngModel: '=',
-            details: '=?'
-        },
-        link: function(scope, element, attrs, model) {
-            var options = {
-                types: []
-            };
-            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+      require: 'ngModel',
+      scope: {
+        ngModel: '=',
+        details: '=?'
+      },
+      link: function(scope, element, attrs, model) {
+        var options = {
+          types: []
+        };
+        scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
-            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-                scope.$apply(function() {
-                    scope.details = scope.gPlace.getPlace();
-                    model.$setViewValue(element.val());
-                });
-            });
-        }
+        google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+          scope.$apply(function() {
+            scope.details = scope.gPlace.getPlace();
+            model.$setViewValue(element.val());
+          });
+        });
+      }
     };
 });
 
