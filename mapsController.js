@@ -153,8 +153,6 @@ angular.module('myModule', ['ngMaterial'])
     console.log(form);
   }
 
-  $scope.totalItem = [];
-
   console.log($scope.totalItem);
 
   $scope.addItem = function() {
@@ -174,11 +172,23 @@ angular.module('myModule', ['ngMaterial'])
 	    center: {lat: 51.509865, lng: -0.118092},
 	    zoom: 8
 	  });
-    var marker = new google.maps.Marker({
-      position: {lat: 51.509865, lng: -0.118092},
-      map: map
-    });
 
+    if ($scope.totalItem) {
+      for (var i = 0; i < $scope.totalItem.length; i++) {
+        console.log($scope.totalItem[i]);
+
+        var marker = new google.maps.Marker({
+          position: $scope.totalItem[i],
+          map: map
+        });
+
+      }
+    } else {
+      var marker = new google.maps.Marker({
+        position: {lat: 51.509865, lng: -0.118092},
+        map: map
+      });
+    }
 	}
 
 	initMap();
