@@ -1,6 +1,10 @@
 angular.module('myModule', ['ngMaterial'])
 .controller('mapsController', function($scope) {
 
+  if(typeof(Storage) !== "undefined") {
+    $scope.totalItem = JSON.parse(localStorage.getItem("itemsPosition"));
+  }
+
   function initializeRequestForm() {
     $scope.form = {
       firstName : {
@@ -149,8 +153,19 @@ angular.module('myModule', ['ngMaterial'])
     console.log(form);
   }
 
+  $scope.totalItem = [];
+
+  console.log($scope.totalItem);
+
   $scope.addItem = function() {
-  	console.log($scope.form);
+    $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude});
+    console.log($scope.totalItem);
+    if(typeof(Storage) !== "undefined") {
+      // localStorage.setItem("itemsPosition", $scope.totalItem);
+      localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+
+    }
+    initializeRequestForm();
   }
 
 	function initMap() {
