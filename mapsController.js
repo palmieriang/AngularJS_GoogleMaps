@@ -166,6 +166,8 @@ angular.module('myModule', ['ngMaterial'])
     if ($scope.totalItem) {
       for (var i = 0; i < $scope.totalItem.length; i++) {
         console.log($scope.totalItem[i]);
+        var position = new google.maps.LatLng($scope.totalItem[i].lat, $scope.totalItem[i].lng);
+        bounds.extend(position);
 
         var marker = new google.maps.Marker({
           position: $scope.totalItem[i],
@@ -180,6 +182,9 @@ angular.module('myModule', ['ngMaterial'])
           }
         })(marker, i));
 
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+
       }
     } else {
       var marker = new google.maps.Marker({
@@ -188,6 +193,13 @@ angular.module('myModule', ['ngMaterial'])
       });
     }
 	}
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(14);
+        google.maps.event.removeListener(boundsListener);
+    });
+
 
 	initMap();
 
