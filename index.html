@@ -86,15 +86,6 @@
 						<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.postcode.error}" placeholder=" " ng-model="form.postcode.value" details="chosenPlaceDetails" googleplace/>
 						<p ng-if="form.postcode.error" class="form-error text" ng-bind="form.postcode.error"></p>
 
-<!-- 						<label class="required">Activated Date
-							<md-tooltip md-direction="top">
-								Add the date you wish to activate the box
-							</md-tooltip>
-						</label>
-						<md-input-container ng-class="{'form-error': form.signDate.error}">
-							<md-datepicker ng-model="form.signDate.value" md-min-date="minDate" name="dateField" class="no-icon" md-placeholder="--/--" aria-label="Booking Date"></md-datepicker>
-						</md-input-container>
-						<p ng-if="form.signDate.error" class="form-error text" ng-bind="form.signDate.error"></p> -->
 					</div>
 					<br />
 				</div>
@@ -123,9 +114,7 @@
 
 			</form>
 
-			<div class="map-container">
-				<div id="map" style="height: 150px"></div>
-			</div>
+			<div id="map" style="height: 450px"></div>
 
 		</div>
 
