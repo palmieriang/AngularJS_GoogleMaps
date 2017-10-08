@@ -3,7 +3,7 @@ angular.module('myModule', ['ngMaterial'])
 
   $scope.totalItem = JSON.parse(localStorage.getItem("itemsPosition") || "[]");
 
-  function initializeRequestForm() {
+  function initializeForm() {
     $scope.form = {
       firstName : {
         value : '',
@@ -38,7 +38,7 @@ angular.module('myModule', ['ngMaterial'])
     };
   }
 
-  initializeRequestForm();
+  initializeForm();
 
   function validate(form) {
     var valid = true;
@@ -127,12 +127,16 @@ angular.module('myModule', ['ngMaterial'])
   console.log($scope.totalItem);
 
   $scope.addItem = function() {
-    $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude});
-    console.log($scope.totalItem);
-    if(typeof(Storage) !== "undefined") {
-      localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+    if (validate($scope.form)) {
+      $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude});
+
+      if(typeof(Storage) !== "undefined") {
+        localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+      }
+
+      initializeForm();
+      $scope.requestSubmitted = true;
     }
-    initializeRequestForm();
   }
 
 	function initMap() {
@@ -144,7 +148,7 @@ angular.module('myModule', ['ngMaterial'])
     $scope.markers = [];
 
     var mapOptions = {
-      zoom: 13,
+      zoom: 6,
       center: new google.maps.LatLng(51.509865, -0.118092),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       zoomControl: true,
@@ -194,12 +198,11 @@ angular.module('myModule', ['ngMaterial'])
     }
 	}
 
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
-
+  // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+  var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+      this.setZoom(14);
+      google.maps.event.removeListener(boundsListener);
+  });
 
 	initMap();
 

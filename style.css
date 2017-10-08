@@ -52,11 +52,20 @@ form label {
 }
 
 .form-error.text {
-    border: none;
-    color: #ffffff;
-    background: #ca786a;
-    padding: 3px;
+  border: none;
+  color: #ffffff;
+  background: #ca786a;
+  padding: 3px;
+  width: 100%;
+  margin-top: -5px;
+  font-size: 11px;
+}
+
+.map-container {
+  height: 450px;
+}
+
+#map {
     width: 100%;
-    margin-top: -5px;
-    font-size: 11px;
+    height: 100%;
 }
