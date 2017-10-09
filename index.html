@@ -45,9 +45,7 @@
 					  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.lastName.error}" placeholder=" " ng-model="form.lastName.value" required/>
 					  <p ng-if="form.lastName.error" class="form-error text" ng-bind="form.lastName.error"></p>
 					</div>
-				</div>
 
-				<div class="col-md-6">
 					<label class="required">Address - Line 1
 						<md-tooltip md-direction="top">
 							Add the first line of the address of the item location
@@ -87,34 +85,35 @@
 					</label>
 					<input type="text" name="name" class="gen-form" ng-class="{'form-error': form.postcode.error}" placeholder=" " ng-model="form.postcode.value" details="chosenPlaceDetails" googleplace/>
 					<p ng-if="form.postcode.error" class="form-error text" ng-bind="form.postcode.error"></p>
-				</div>
-				<br />
-			</div>
 
-		  <div class="row">
-				<md-dialog-actions class="booking-footer">
-					<span flex></span>
 					<div class="row">
-						<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
-							<button type="submit" class="" ng-click="addItem()">
-								<span>Submit</span>
-							</button>
+						<div class="row">
+							<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
+								<button type="submit" class="" ng-click="addItem()">
+									<span>Submit</span>
+								</button>
+							</div>
+						</div>
+						<!-- <p ng-if="submitError" class="form-error text" ng-bind="errorMessage"></p> -->
+						<div class="row text-center" ng-if="submitActivationError">
+							<p class="container-title text-center request-submitted"> Failed to add the item.</p>
+						</div>
+
+						<div class="row text-center" ng-if="requestSubmitted">
+							<p class="container-title text-center request-submitted"> Thank you for adding a new item; please, reload the page to see the item on the map.</p>
 						</div>
 					</div>
-		  	</md-dialog-actions>
-				<!-- <p ng-if="submitError" class="form-error text" ng-bind="errorMessage"></p> -->
-				<div class="row text-center" ng-if="submitActivationError">
-					<p class="container-title text-center request-submitted"> Failed to add the item.</p>
+
 				</div>
 
-				<div class="row text-center" ng-if="requestSubmitted">
-					<p class="container-title text-center request-submitted"> Thank you for adding a new item; please, reload the page to see the item on the map.</p>
+				<div class="col-md-6">
+					<div class="map-container">
+						<div id="map"></div>
+					</div>
 				</div>
+
 			</div>
 		</form>
-		<div class="map-container">
-			<div id="map"></div>
-		</div>
 
 	</div>
 

@@ -62,7 +62,8 @@ form label {
 }
 
 .map-container {
-  height: 450px;
+  height: 550px;
+  margin-top: 10px;
 }
 
 #map {
