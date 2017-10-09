@@ -76,6 +76,15 @@ angular.module('myModule', ['ngMaterial'])
     return re.test(postcode);
   }
 
+  $scope.formatDate = function(str) {
+    if(str == null) {
+      return null;
+    }
+    else {
+      return moment(str).format('dddd Do MMMM YYYY');
+    }
+  }
+
   $scope.$watch('chosenPlaceDetails', function(value, old) {
     if ($scope.chosenPlaceDetails) {
       googleAutoCompleteAddress($scope.chosenPlaceDetails, $scope.form);
@@ -128,11 +137,16 @@ angular.module('myModule', ['ngMaterial'])
 
   $scope.addItem = function() {
     if (validate($scope.form)) {
-      $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude});
+
+      $scope.form.timestamp = new Date();
+
+      $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude, name: $scope.form.firstName.value + ' ' + $scope.form.lastName.value, date: $scope.form.timestamp});
 
       if(typeof(Storage) !== "undefined") {
         localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
       }
+
+      console.log($scope.form);
 
       initializeForm();
       $scope.requestSubmitted = true;
@@ -181,7 +195,10 @@ angular.module('myModule', ['ngMaterial'])
         // infowindow
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            infowindow.setContent('<div><p>Test</p></div>');
+            infowindow.setContent('<div>\
+              <p>Name: <span><strong>' + $scope.totalItem[i].name + '</strong></span></p>\
+              <p>Date: <span><strong>' + $scope.formatDate($scope.totalItem[i].date) + '</strong></span></p>\
+              </div>');
             infowindow.open(map, marker);
           }
         })(marker, i));
