@@ -1,4 +1,4 @@
-angular.module('myModule', ['ngMaterial'])
+angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 .controller('mapsController', function($scope) {
 
 	$scope.totalItem = JSON.parse(localStorage.getItem("itemsPosition") || "[]");

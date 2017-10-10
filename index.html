@@ -6,14 +6,22 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- Angular Material CSS -->
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<!-- Slick Carousel CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
 	<!-- Style -->
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<!-- Angular -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+	<!-- Slick Carousel -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-slick-carousel/3.1.7/angular-slick.js"></script>
 	<!-- Moment.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 </head>
@@ -21,7 +29,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12 col-xs-12">
-				<p class="listing-title">Add new item on the map</p>
+				<slick autoplay=true slides-to-show=1 slides-to-scroll=1>
+					<p class="listing-title">Add new item on the map</p>
+					<p class="listing-title">Add new item on the map</p>
+					<p class="listing-title">Add new item on the map</p>
+					<p class="listing-title">Add new item on the map</p>
+				</slick>
+				<!-- <p class="listing-title">Add new item on the map</p> -->
 			</div>
 		</div>
 	</div>
@@ -35,16 +49,16 @@
 								Add your first name here
 							</md-tooltip>
 						</label>
-					  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.firstName.error}" placeholder=" " ng-model="form.firstName.value" required/>
-					  <p ng-if="form.firstName.error" class="form-error text" ng-bind="form.firstName.error"></p>
+						<input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.firstName.error}" placeholder=" " ng-model="form.firstName.value" required/>
+						<p ng-if="form.firstName.error" class="form-error text" ng-bind="form.firstName.error"></p>
 
 						<label class="required">Last Name
 							<md-tooltip md-direction="top">
 								Add your last name here
 							</md-tooltip>
 						</label>
-					  <input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.lastName.error}" placeholder=" " ng-model="form.lastName.value" required/>
-					  <p ng-if="form.lastName.error" class="form-error text" ng-bind="form.lastName.error"></p>
+						<input type="text" name="name" class="gen-form capitalize" ng-class="{'form-error': form.lastName.error}" placeholder=" " ng-model="form.lastName.value" required/>
+						<p ng-if="form.lastName.error" class="form-error text" ng-bind="form.lastName.error"></p>
 					</div>
 
 					<label class="required">Address - Line 1
