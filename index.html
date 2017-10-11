@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myModule" ng-cloak>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AngularJS - Google Maps</title>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -27,15 +27,15 @@
 </head>
 <body ng-controller="mapsController">
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12 col-xs-12">
-				<slick autoplay=true slides-to-show=1 slides-to-scroll=1>
-					<p class="listing-title">Add new item on the map</p>
-					<p class="listing-title">Add new item on the map</p>
-					<p class="listing-title">Add new item on the map</p>
-					<p class="listing-title">Add new item on the map</p>
-				</slick>
-				<!-- <p class="listing-title">Add new item on the map</p> -->
+		<div class="row header">
+			<slick autoplay=true slides-to-show=1 slides-to-scroll=1>
+				<div class="header-img" ng-repeat="image in imgBackground" style="background:url('{{image}}'); background-size: cover; background-position: center;">
+				</div>
+			</slick>
+			<div class="header-text">
+				<div class="container text-center">
+					<h1>Add a new item on the map</h1>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -102,20 +102,20 @@
 					<p ng-if="form.postcode.error" class="form-error text" ng-bind="form.postcode.error"></p>
 
 					<div class="row">
-						<div class="row">
-							<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
-								<button type="submit" class="" ng-click="addItem()">
-									<span>Submit</span>
-								</button>
-							</div>
+						<div class="col-xs-12 col-no-padding-right" ng-if="!requestSubmitted">
+							<button type="submit" class="btn" ng-click="addItem()">
+								<span>Submit</span>
+							</button>
 						</div>
+					</div>
+					<div class="row">
 						<!-- <p ng-if="submitError" class="form-error text" ng-bind="errorMessage"></p> -->
-						<div class="row text-center" ng-if="submitActivationError">
-							<p class="container-title text-center request-submitted"> Failed to add the item.</p>
+						<div class="col-xs-12 text-center" ng-if="submitActivationError">
+							<p class="text-center"> Failed to add the item.</p>
 						</div>
 
-						<div class="row text-center" ng-if="requestSubmitted">
-							<p class="container-title text-center request-submitted"> Thank you for adding a new item; please, reload the page to see the item on the map.</p>
+						<div class="col-xs-12 text-center" ng-if="requestSubmitted">
+							<p class="text-center"> Thank you for adding a new item; please, reload the page to see the item on the map.</p>
 						</div>
 					</div>
 

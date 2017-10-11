@@ -1,3 +1,29 @@
+body {
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: "Courier New", Courier, monospace;
+}
+
+.header {
+	position: relative;
+}
+
+.header .header-text {
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	color: white;
+	text-shadow: 1px 1px 1px #3e3e3e;
+}
+
+.header .header-img {
+	height: 150px;
+}
+
+.container {
+	margin: 10px auto;
+}
+
 input.capitalize {
 	text-transform: capitalize;
 }
@@ -52,21 +78,43 @@ form label {
 }
 
 .form-error.text {
-  border: none;
-  color: #ffffff;
-  background: #ca786a;
-  padding: 3px;
-  width: 100%;
-  margin-top: -5px;
-  font-size: 11px;
+	border: none;
+	color: #ffffff;
+	background: #ca786a;
+	padding: 3px;
+	width: 100%;
+	margin-top: -5px;
+	font-size: 11px;
 }
 
 .map-container {
-  height: 550px;
-  margin-top: 10px;
+	height: 553px;
+	margin-top: 10px;
 }
 
 #map {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
+}
+
+.btn {
+	background-color: #436d7d;
+	color: white;
+	border: 2px solid #436d7d;
+	margin: 10px 0;
+	padding: 5px 10px;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.btn:focus {
+	outline: 0;
+}
+
+.btn:hover {
+	background-color: white;
+	color: #436d7d;
 }

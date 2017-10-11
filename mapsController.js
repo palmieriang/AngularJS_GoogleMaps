@@ -3,6 +3,12 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 	$scope.totalItem = JSON.parse(localStorage.getItem("itemsPosition") || "[]");
 
+	$scope.imgBackground = [
+		'https://images.unsplash.com/photo-1484544808355-8ec84e534d75?dpr=1&auto=compress,format&fit=crop&w=2266&h=&q=80&cs=tinysrgb&crop=',
+		'https://images.unsplash.com/photo-1488646953014-85cb44e25828?dpr=1&auto=compress,format&fit=crop&w=1866&h=&q=80&cs=tinysrgb&crop=',
+		'https://images.unsplash.com/photo-1497302347632-904729bc24aa?dpr=1&auto=compress,format&fit=crop&w=2250&h=&q=80&cs=tinysrgb&crop='
+	];
+
 	function initializeForm() {
 		$scope.form = {
 			firstName : {
@@ -150,6 +156,8 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 			initializeForm();
 			$scope.requestSubmitted = true;
+		} else {
+			$scope.submitActivationError = true;
 		}
 	}
 
