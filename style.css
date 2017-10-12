@@ -112,6 +112,7 @@ form label {
 
 .btn:focus {
 	outline: 0;
+	color: white;
 }
 
 .btn:hover {

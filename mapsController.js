@@ -1,7 +1,8 @@
 angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 .controller('mapsController', function($scope) {
 
-	$scope.totalItem = JSON.parse(localStorage.getItem("itemsPosition") || "[]");
+	const itemsPosition = localStorage.getItem("itemsPosition");
+	$scope.totalItem = itemsPosition ? JSON.parse(itemsPosition) : [];
 
 	$scope.imgBackground = [
 		'https://images.unsplash.com/photo-1484544808355-8ec84e534d75?dpr=1&auto=compress,format&fit=crop&w=2266&h=&q=80&cs=tinysrgb&crop=',
@@ -166,6 +167,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 		var infowindow = new google.maps.InfoWindow();
 		var bounds = new google.maps.LatLngBounds();
 		var marker, i;
+		var iconImage = 'pin-map.png';
 
 		$scope.markers = [];
 
@@ -197,6 +199,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 				var marker = new google.maps.Marker({
 					position: $scope.totalItem[i],
+					icon: iconImage,
 					map: map
 				});
 
