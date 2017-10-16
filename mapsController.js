@@ -235,7 +235,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	initMap();
 
 	// Popup 1
-	$scope.showAlert = function(ev) {
+	$scope.showConfirmation = function(ev) {
 		console.log($scope.form);
 		$mdDialog.show({
 			templateUrl: 'dialogPopup.html',
@@ -246,13 +246,16 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 			clickOutsideToClose: true
 		}).then(function() {
 			$scope.status = 'You decided to get rid of your debt.';
+			console.log('ok');
 		}, function() {
 			$scope.status = 'You decided to keep your debt.';
+			console.log('not ok');
 		});
+
 	};
 
 	// Popup 2 (needs local server)
-	// $scope.showAlert = function(ev) {
+	// $scope.showConfirmation = function(ev) {
 	// 	$mdDialog.show({
 	// 		controller: 'confirmController',
 	// 		templateUrl: 'popupConfirm.html',
@@ -265,8 +268,10 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	// 		}
 	// 	}).then(function() {
 	// 		$scope.status = 'You decided to get rid of your debt.';
+	// 		console.log('ok');
 	// 	}, function() {
 	// 		$scope.status = 'You decided to keep your debt.';
+	// 		console.log('not ok');
 	// 	});
 	// };
 
@@ -279,19 +284,14 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 		$scope.city = form.city.value;
 		$scope.postcode = form.postcode.value;
 
-		$scope.hide = function() {
-			$mdDialog.hide();
-		};
-
 		$scope.cancel = function() {
 			$mdDialog.cancel();
-		};
+		}
 
-		$scope.answer = function(answer) {
-			$mdDialog.hide(answer);
-		};
+		$scope.submit = function() {
+			$mdDialog.hide();
+		}
 	}
-
 
 })
 .controller('confirmController', function($scope, $mdDialog, form) {
@@ -321,25 +321,25 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 })
 .directive('googleplace', function($rootScope) {
-		return {
-			require: 'ngModel',
-			scope: {
-				ngModel: '=',
-				details: '=?'
-			},
-			link: function(scope, element, attrs, model) {
-				var options = {
-					types: []
-				};
-				scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+	return {
+		require: 'ngModel',
+		scope: {
+			ngModel: '=',
+			details: '=?'
+		},
+		link: function(scope, element, attrs, model) {
+			var options = {
+				types: []
+			};
+			scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
-				google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-					scope.$apply(function() {
-						scope.details = scope.gPlace.getPlace();
-						model.$setViewValue(element.val());
-					});
+			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+				scope.$apply(function() {
+					scope.details = scope.gPlace.getPlace();
+					model.$setViewValue(element.val());
 				});
-			}
-		};
+			});
+		}
+	};
 });
 
