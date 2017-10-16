@@ -132,7 +132,60 @@
 		</form>
 
 	</div>
+	<!-- Popup template -->
+	<script type="text/ng-template" id="dialogPopup.html">
+		<md-dialog aria-label="Confirm Form">
+			<form>
+				<md-dialog-content>
+					<div class="md-dialog-content">
+						<h2>Please check and make sure that these details are correct</h2>
+						<table class="table table-bordered table-striped">
+							<tbody>
+								<tr>
+									<td><p>First Name:</p></td>
+									<td><p><strong>{{firstName}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>Last Name:</p></td>
+									<td><p><strong>{{lastName}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>Address Line 1:</p></td>
+									<td><p><strong>{{address1}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>Address Line 2:</p></td>
+									<td><p><strong>{{address2}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>Country:</p></td>
+									<td><p><strong>{{country}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>City:</p></td>
+									<td><p><strong>{{city}}</strong></p></td>
+								</tr>
+								<tr>
+									<td><p>Postcode:</p></td>
+									<td><p><strong>{{postcode}}</strong></p></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</md-dialog-content>
 
+				<md-dialog-actions class="booking-footer">
+					<button type="cancel" class="md-button cancel large-text" ng-click="cancel()" >
+						<span> Back </span>
+					</button>
+					<span flex></span>
+					<button type="submit" class="md-button confirm large-text" ng-click="submit()">
+						<span> Confirm </span>
+					</button>
+				</md-dialog-actions>
+			</form>
+		</md-dialog>
+	</script>
 	<!-- Script -->
 	<script src="mapsController.js"></script>
 	<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmnk4-s1s9kxwimuu7m7uMRlnDG7ERIc8&libraries=places'></script>

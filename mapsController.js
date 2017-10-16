@@ -234,36 +234,90 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 	initMap();
 
-  $scope.showAlert = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    // Modal dialogs should fully cover application
-    // to prevent interaction outside of dialog
-    $mdDialog.show(
-      $mdDialog.alert()
-        .parent(angular.element(document.querySelector('#popupContainer')))
-        .clickOutsideToClose(true)
-        .title('This is an alert title')
-        .textContent('You can specify some description text in here.')
-        .ariaLabel('Alert Dialog Demo')
-        .ok('Got it!')
-        .targetEvent(ev)
-    );
-  };
+	// Popup 1
+	$scope.showAlert = function(ev) {
+		console.log($scope.form);
+		$mdDialog.show({
+			templateUrl: 'dialogPopup.html',
+			locals: {
+				form: $scope.form
+			},
+			controller: DialogController,
+			clickOutsideToClose: true
+		}).then(function() {
+			$scope.status = 'You decided to get rid of your debt.';
+		}, function() {
+			$scope.status = 'You decided to keep your debt.';
+		});
+	};
 
-  function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
+	// Popup 2 (needs local server)
+	// $scope.showAlert = function(ev) {
+	// 	$mdDialog.show({
+	// 		controller: 'confirmController',
+	// 		templateUrl: 'popupConfirm.html',
+	// 		parent: angular.element(document.body),
+	// 		targetEvent: ev,
+	// 		clickOutsideToClose: false,
+	// 		fullscreen: true,
+	// 		locals:{
+	// 			form: $scope.form
+	// 		}
+	// 	}).then(function() {
+	// 		$scope.status = 'You decided to get rid of your debt.';
+	// 	}, function() {
+	// 		$scope.status = 'You decided to keep your debt.';
+	// 	});
+	// };
 
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
+	function DialogController($scope, $mdDialog, form) {
+		$scope.firstName = form.firstName.value;
+		$scope.lastName = form.lastName.value;
+		$scope.address1 = form.address1.value;
+		$scope.address2 = form.address2.value;
+		$scope.country = form.country.value;
+		$scope.city = form.city.value;
+		$scope.postcode = form.postcode.value;
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
-  }
+		$scope.hide = function() {
+			$mdDialog.hide();
+		};
 
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+
+		$scope.answer = function(answer) {
+			$mdDialog.hide(answer);
+		};
+	}
+
+
+})
+.controller('confirmController', function($scope, $mdDialog, form) {
+	$scope.firstName = form.firstName.value;
+	$scope.lastName = form.lastName.value;
+	$scope.address1 = form.address1.value;
+	$scope.address2 = form.address2.value;
+	$scope.country = form.country.value;
+	$scope.city = form.city.value;
+	$scope.postcode = form.postcode.value;
+
+	$scope.cancel = function() {
+		$mdDialog.cancel();
+	}
+
+	$scope.submit = function() {
+		$mdDialog.hide();
+	}
+
+	$scope.formatDate = function(str) {
+		if(str == null) {
+			return null;
+		} else {
+			return moment(str).format('dddd Do MMMM YYYY');
+		}
+	}
 
 })
 .directive('googleplace', function($rootScope) {
