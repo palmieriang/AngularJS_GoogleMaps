@@ -1,5 +1,5 @@
 angular.module('myModule', ['ngMaterial', 'slickCarousel'])
-.controller('mapsController', function($scope) {
+.controller('mapsController', function($scope, $mdDialog) {
 
 	const itemsPosition = localStorage.getItem("itemsPosition");
 	$scope.totalItem = itemsPosition ? JSON.parse(itemsPosition) : [];
@@ -233,6 +233,37 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	});
 
 	initMap();
+
+  $scope.showAlert = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    // Modal dialogs should fully cover application
+    // to prevent interaction outside of dialog
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('This is an alert title')
+        .textContent('You can specify some description text in here.')
+        .ariaLabel('Alert Dialog Demo')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
+  };
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+
 
 })
 .directive('googleplace', function($rootScope) {
