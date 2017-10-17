@@ -145,18 +145,22 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	$scope.addItem = function() {
 		if (validate($scope.form)) {
 
-			$scope.form.timestamp = new Date();
+			// confirm details popup
+			$scope.showConfirmation();
 
-			$scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude, name: $scope.form.firstName.value + ' ' + $scope.form.lastName.value, date: $scope.form.timestamp});
+			// add item without popup confirmation
+			// $scope.form.timestamp = new Date();
 
-			if(typeof(Storage) !== "undefined") {
-				localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
-			}
+			// $scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude, name: $scope.form.firstName.value + ' ' + $scope.form.lastName.value, date: $scope.form.timestamp});
 
-			console.log($scope.form);
+			// if(typeof(Storage) !== "undefined") {
+			// 	localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+			// }
 
-			initializeForm();
-			$scope.requestSubmitted = true;
+			// console.log($scope.form);
+
+			// initializeForm();
+			// $scope.requestSubmitted = true;
 		} else {
 			$scope.submitActivationError = true;
 		}
@@ -236,7 +240,6 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 	// Popup 1
 	$scope.showConfirmation = function(ev) {
-		console.log($scope.form);
 		$mdDialog.show({
 			templateUrl: 'dialogPopup.html',
 			locals: {
@@ -245,11 +248,20 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 			controller: DialogController,
 			clickOutsideToClose: true
 		}).then(function() {
-			$scope.status = 'You decided to get rid of your debt.';
-			console.log('ok');
+
+			$scope.form.timestamp = new Date();
+
+			$scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude, name: $scope.form.firstName.value + ' ' + $scope.form.lastName.value, date: $scope.form.timestamp});
+
+			if(typeof(Storage) !== "undefined") {
+				localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+			}
+
+			initializeForm();
+			$scope.requestSubmitted = true;
+
 		}, function() {
-			$scope.status = 'You decided to keep your debt.';
-			console.log('not ok');
+			console.log('not added');
 		});
 
 	};
@@ -267,11 +279,9 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	// 			form: $scope.form
 	// 		}
 	// 	}).then(function() {
-	// 		$scope.status = 'You decided to get rid of your debt.';
 	// 		console.log('ok');
 	// 	}, function() {
-	// 		$scope.status = 'You decided to keep your debt.';
-	// 		console.log('not ok');
+	// 		console.log('not added');
 	// 	});
 	// };
 
