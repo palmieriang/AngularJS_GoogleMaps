@@ -414,7 +414,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 			locals: {
 				form: $scope.form
 			},
-			controller: DialogController,
+			controller: 'confirmController',
 			clickOutsideToClose: true
 		}).then(function() {
 
@@ -436,41 +436,34 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 	};
 
 	// Popup 2 (needs local server)
-	// $scope.showConfirmation = function(ev) {
-	// 	$mdDialog.show({
-	// 		controller: 'confirmController',
-	// 		templateUrl: 'popupConfirm.html',
-	// 		parent: angular.element(document.body),
-	// 		targetEvent: ev,
-	// 		clickOutsideToClose: false,
-	// 		fullscreen: true,
-	// 		locals:{
-	// 			form: $scope.form
-	// 		}
-	// 	}).then(function() {
-	// 		console.log('ok');
-	// 	}, function() {
-	// 		console.log('not added');
-	// 	});
-	// };
+	$scope.showConfirmation = function(ev) {
+		$mdDialog.show({
+			templateUrl: 'popupConfirm.html',
+			controller: 'confirmController',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: false,
+			fullscreen: true,
+			locals:{
+				form: $scope.form
+			}
+		}).then(function() {
 
-	function DialogController($scope, $mdDialog, form) {
-		$scope.firstName = form.firstName.value;
-		$scope.lastName = form.lastName.value;
-		$scope.address1 = form.address1.value;
-		$scope.address2 = form.address2.value;
-		$scope.country = form.country.value;
-		$scope.city = form.city.value;
-		$scope.postcode = form.postcode.value;
+			$scope.form.timestamp = new Date();
 
-		$scope.cancel = function() {
-			$mdDialog.cancel();
-		}
+			$scope.totalItem.push({lat: $scope.form.latitude, lng: $scope.form.longitude, name: $scope.form.firstName.value + ' ' + $scope.form.lastName.value, date: $scope.form.timestamp});
 
-		$scope.submit = function() {
-			$mdDialog.hide();
-		}
-	}
+			if(typeof(Storage) !== "undefined") {
+				localStorage.setItem("itemsPosition", JSON.stringify($scope.totalItem));
+			}
+
+			initializeForm();
+			$scope.requestSubmitted = true;
+
+		}, function() {
+			console.log('not added');
+		});
+	};
 
 })
 .controller('confirmController', function($scope, $mdDialog, form) {
@@ -520,5 +513,15 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 			});
 		}
 	};
+})
+.directive('header', function() {
+	return {
+		restrict: 'E',
+		templateUrl: '/header.html',
+		controller: function($scope) {
+
+		}
+	};
 });
+
 
