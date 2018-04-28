@@ -1,3 +1,7 @@
+html, body {
+	overflow: auto;
+}
+
 body {
 	/*font-family: Verdana, Geneva, sans-serif;*/
 	font-family: "Courier New", Courier, monospace;
@@ -5,6 +9,7 @@ body {
 
 .header {
 	position: relative;
+	overflow-x: hidden;
 }
 
 .header .header-text {
