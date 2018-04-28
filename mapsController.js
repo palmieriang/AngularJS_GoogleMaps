@@ -358,7 +358,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 
 		// Create a map object and specify the DOM element for display.
 		var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		
+
 		// styled map
 		map.mapTypes.set('styled_map', styledMapType);
 		map.setMapTypeId('styled_map');
@@ -514,7 +514,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 		}
 	};
 })
-.directive('header', function() {
+.directive('imageHeader', function() {
 	return {
 		restrict: 'E',
 		templateUrl: '/header.html',
