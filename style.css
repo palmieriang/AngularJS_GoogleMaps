@@ -7,12 +7,12 @@ body {
 	font-family: "Courier New", Courier, monospace;
 }
 
-.header {
+.hero {
 	position: relative;
 	overflow-x: hidden;
 }
 
-.header .header-text {
+.hero .hero-text {
 	position: absolute;
 	bottom: 5px;
 	width: 100%;
@@ -21,7 +21,7 @@ body {
 	text-shadow: 1px 1px 1px #3e3e3e;
 }
 
-.header .header-img {
+.hero .hero-img {
 	height: 150px;
 }
 
@@ -76,7 +76,7 @@ input.gen-form:focus, textarea.gen-form:focus {
 }
 
 form label {
-	color: grey;
+	color: #575757;
 	font-size: 13px;
 	margin-bottom: 0;
 	margin-top: 10px;
@@ -123,4 +123,23 @@ form label {
 .btn:hover {
 	background-color: white;
 	color: #436d7d;
+}
+
+.slick-prev {
+	left: 25px;
+}
+
+.slick-next {
+	right: 25px;
+}
+
+.slick-prev, .slick-next {
+	z-index: 9;
+}
+
+.md-tooltip {
+	height: 35px !important;
+	background-color: red !important;
+	color: white !important;
+	border-radius: 5px;
 }
