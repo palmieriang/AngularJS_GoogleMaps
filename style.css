@@ -1,3 +1,7 @@
+html {
+	font-size: 62.5%;
+}
+
 html, body {
 	overflow: auto;
 }
@@ -14,19 +18,19 @@ body {
 
 .hero .hero-text {
 	position: absolute;
-	bottom: 5px;
+	bottom: 0.5rem;
 	width: 100%;
 	background: rgba(0, 0, 0, 0.3);
 	color: white;
-	text-shadow: 1px 1px 1px #3e3e3e;
+	text-shadow: 0.1rem 0.1rem 0.1rem #3e3e3e;
 }
 
 .hero .hero-img {
-	height: 150px;
+	height: 15rem;
 }
 
 .container {
-	margin: 10px auto;
+	margin: 1rem auto;
 }
 
 input.capitalize {
@@ -39,9 +43,9 @@ input.capitalize {
 
 .name-input-field {
 	background-color: #436d7d;
-	padding: 5px 10px 20px 10px;
-	margin-top: 10px;
-	border-radius: 4px;
+	padding: 0.5rem 1rem 2rem 1rem;
+	margin-top: 1rem;
+	border-radius: 0.4rem;
 }
 
 .name-input-field input {
@@ -53,48 +57,48 @@ input.capitalize {
 }
 
 input.gen-form, textarea.gen-form, md-input-container.gen-form, md-datepicker.gen-form {
-	border: 1px solid rgba(97, 97, 97, 0.24);
+	border: 0.1rem solid rgba(97, 97, 97, 0.24);
 	width: 100%;
-	height: 40px;
-	padding: 10px;
+	height: 4rem;
+	padding: 1rem;
 	transition: .2s all ease;
 	font-weight: bold;
 }
 
 md-input-container.gen-form {
 	margin: 0;
-	padding: 5px;
+	padding: 0.5rem;
 	background-color: white;
 }
 
 /*textarea.gen-form {
-	height: 100px;
+	height: 10rem;
 }*/
 
 input.gen-form:focus, textarea.gen-form:focus {
-	border: 1px solid #436d7d;
+	border: 0.1rem solid #436d7d;
 }
 
 form label {
 	color: #575757;
-	font-size: 13px;
+	font-size: 1.3rem;
 	margin-bottom: 0;
-	margin-top: 10px;
+	margin-top: 1rem;
 }
 
 .form-error.text {
 	border: none;
 	color: #ffffff;
 	background: #ca786a;
-	padding: 3px;
+	padding: 0.3rem;
 	width: 100%;
-	margin-top: -5px;
-	font-size: 11px;
+	margin-top: -0.5rem;
+	font-size: 1.1rem;
 }
 
 .map-container {
-	height: 553px;
-	margin-top: 10px;
+	height: 55.3rem;
+	margin-top: 1rem;
 }
 
 #map {
@@ -105,12 +109,12 @@ form label {
 .btn {
 	background-color: #436d7d;
 	color: white;
-	border: 2px solid #436d7d;
-	margin: 10px 0;
-	padding: 5px 10px;
-	border-radius: 4px;
+	border: 0.2rem solid #436d7d;
+	margin: 1rem 0;
+	padding: 0.5rem 1rem;
+	border-radius: 0.4rem;
 	width: 100%;
-	font-size: 15px;
+	font-size: 1.5rem;
 	font-weight: 600;
 	text-transform: uppercase;
 }
@@ -126,11 +130,11 @@ form label {
 }
 
 .slick-prev {
-	left: 25px;
+	left: 2.5rem;
 }
 
 .slick-next {
-	right: 25px;
+	right: 2.5rem;
 }
 
 .slick-prev, .slick-next {
@@ -138,8 +142,8 @@ form label {
 }
 
 .md-tooltip {
-	height: 35px !important;
+	height: 3.5rem !important;
 	background-color: red !important;
 	color: white !important;
-	border-radius: 5px;
+	border-radius: 0.5rem;
 }
