@@ -29,10 +29,10 @@
 	<header class="container-fluid">
 		<image-header></image-header>
 	</header>
-	<main class="container">
+	<main class="container" role="main">
 		<div class="row">
 			<div class="col-md-6">
-				<form novalidate>
+				<form role="form" novalidate>
 					<div class="name-input-field">
 						<label class="required">First Name
 							<md-tooltip md-direction="top">
@@ -119,7 +119,7 @@
 	</main>
 	<!-- Popup template -->
 	<script type="text/ng-template" id="dialogPopup.html">
-		<md-dialog aria-label="Confirm Form">
+		<md-dialog aria-label="Confirm Form" role="dialog">
 			<form>
 				<md-dialog-content>
 					<div class="md-dialog-content">
