@@ -42,10 +42,31 @@ input.capitalize {
 }
 
 .name-input-field {
-	background-color: #436d7d;
-	padding: 0.5rem 1rem 2rem 1rem;
 	margin-top: 1rem;
 	border-radius: 0.4rem;
+}
+
+.name-input-field .fieldset {
+	background-color: #436d7d;
+	margin-bottom: 1rem;
+}
+
+.fieldset {
+	border: 0.1rem solid #436d7d;
+	padding: 1rem;
+	border-radius: 0.4rem;
+}
+
+.legend {
+	background-color: white;
+	border: 1px solid #436d7d;
+	border-radius: 5px;
+	padding: 0.2em 0.5em;
+	font-size: 90%;
+	width: auto;
+	margin-bottom: 0;
+	font-size: 1.3rem;
+	font-weight: bold;
 }
 
 .name-input-field input {
@@ -97,8 +118,8 @@ form label {
 }
 
 .map-container {
-	height: 55.3rem;
-	margin-top: 1rem;
+	height: 61.2rem;
+	margin-top: 2.2rem;
 }
 
 #map {
@@ -119,12 +140,8 @@ form label {
 	text-transform: uppercase;
 }
 
-.btn:focus {
+.btn:focus, .btn:hover {
 	outline: 0;
-	color: white;
-}
-
-.btn:hover {
 	background-color: white;
 	color: #436d7d;
 }
