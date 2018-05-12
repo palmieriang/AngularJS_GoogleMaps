@@ -166,6 +166,13 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 		}
 	}
 
+	$scope.resetForm = function() {
+		if (confirm('Are you sure that you want to reset the form?')) {
+			initializeForm();
+			$scope.submitActivationError = false;
+		}
+	}
+
 	function initMap() {
 
 		var infowindow = new google.maps.InfoWindow();

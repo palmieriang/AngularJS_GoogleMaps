@@ -113,8 +113,7 @@ form label {
 	background: #ca786a;
 	padding: 0.3rem;
 	width: 100%;
-	margin-top: -0.5rem;
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 }
 
 .map-container {
@@ -128,9 +127,7 @@ form label {
 }
 
 .btn {
-	background-color: #436d7d;
 	color: white;
-	border: 0.2rem solid #436d7d;
 	margin: 1rem 0;
 	padding: 0.5rem 1rem;
 	border-radius: 0.4rem;
@@ -140,10 +137,27 @@ form label {
 	text-transform: uppercase;
 }
 
+.btn[type="submit"] {
+	background-color: #436d7d;
+	border: 0.2rem solid #436d7d;
+}
+
+.btn[type="reset"] {
+	background-color: #ca786a;
+	border: 0.2rem solid #ca786a;
+}
+
 .btn:focus, .btn:hover {
 	outline: 0;
 	background-color: white;
+}
+
+.btn[type="submit"]:hover, .btn[type="submit"]:focus {
 	color: #436d7d;
+}
+
+.btn[type="reset"]:hover, .btn[type="reset"]:focus {
+	color: #ca786a;
 }
 
 .slick-prev {
@@ -158,9 +172,24 @@ form label {
 	z-index: 9;
 }
 
-.md-tooltip {
-	height: 3.5rem !important;
-	background-color: red !important;
-	color: white !important;
-	border-radius: 0.5rem;
+.fade-in.ng-enter {
+  transition: 0.8s linear all;
+  opacity: 0;
+}
+
+.fade-in-init .fade-in.ng-enter {
+  opacity: 1;
+}
+
+.fade-in.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.fade-in.ng-leave {
+  transition: 0.3s linear all;
+  opacity: 1;
+}
+
+.fade-in.ng-leave.ng-leave-active {
+  opacity: 0;
 }
