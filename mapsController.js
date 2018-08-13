@@ -178,7 +178,7 @@ angular.module('myModule', ['ngMaterial', 'slickCarousel'])
 		var infowindow = new google.maps.InfoWindow();
 		var bounds = new google.maps.LatLngBounds();
 		var marker, i;
-		var iconImage = 'pin-map.png';
+		var iconImage = 'img/pin-map.png';
 
 		$scope.markers = [];
 
